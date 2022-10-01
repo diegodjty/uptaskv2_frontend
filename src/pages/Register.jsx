@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from '../components/Alert';
 import axiosClient from '../config/axiosClient';
 import { useEffect } from 'react';
@@ -10,6 +10,8 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [alert, setAlert] = useState({});
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,11 +49,11 @@ const Register = () => {
         email,
         password,
       });
-      setAlert({
-        msg: data.msg,
-        error: false,
-      });
-
+      // setAlert({
+      //   msg: data.msg,
+      //   error: false,
+      // });
+      navigate('/');
       setName('');
       setEmail('');
       setPassword('');
